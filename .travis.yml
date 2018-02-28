@@ -7,9 +7,7 @@ env:
 services:
   - docker
 script:
-  # prepare qemu (https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/)
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
-  # build image
   - docker build -t gregoireweber/youtrack-arm:latest .
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
