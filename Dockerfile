@@ -1,4 +1,4 @@
-FROM        resin/raspberry-pi-openjdk:8
+FROM        resin/raspberry-pi-openjdk:openjdk-8-jre
 
 ENV         YOUTRACK_VERSION="2017.4"
 ENV         YOUTRACK_BUILD="39406"
