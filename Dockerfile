@@ -1,17 +1,17 @@
 FROM        openjdk:9-jre
 
-ENV         APP_VERSION="2017.4"
-ENV         APP_BUILD="39406"
-ENV         PORT="80"
+ENV         YOUTRACK_VERSION="2017.4"
+ENV         YOUTRACK_BUILD="39406"
+ENV         YOUTRACK_PORT="80"
 
-EXPOSE      ${PORT}
+EXPOSE      ${YOUTRACK_PORT}
 
 LABEL       maintainer="Grégoire Weber"
-LABEL       version="${APP_VERSION}.${APP_BUILD}"
+LABEL       version="${YOUTRACK_VERSION}.${YOUTRACK_BUILD}"
 
 WORKDIR     /youtrack
 
-RUN         wget -qO youtrack-${APP_VERSION}.${APP_BUILD}.zip https://download.jetbrains.com/charisma/youtrack-${APP_VERSION}.${APP_BUILD}.jar
+RUN         wget -qO youtrack-${YOUTRACK_VERSION}.${YOUTRACK_BUILD}.zip https://download.jetbrains.com/charisma/youtrack-${YOUTRACK_VERSION}.${YOUTRACK_BUILD}.jar
+COPY        entrypoint.sh .
 
-ENTRYPOINT  ["java", "-Xmx1g", "-XX:MaxMetaspaceSize=250M", "-Djava.awt.headless=true", "-jar", "youtrack-${APP_VERSION}.${APP_BUILD}.jar"]
-CMD         "${PORT}"
+ENTRYPOINT  ["./entrypoint.sh"]
