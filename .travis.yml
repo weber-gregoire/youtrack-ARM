@@ -1,10 +1,5 @@
 sudo: required
 
-env:
-  global:
-    - YOUTRACK_VERSION="2017.4"
-    - YOUTRACK_BUILD="39406"
-
 services:
   - docker
 
@@ -18,12 +13,4 @@ script:
 
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker tag gregoireweber/youtrack-arm:latest gregoireweber/youtrack-arm:"$YOUTRACK_VERSION"."YOUTRACK_BUILD"-"$TRAVIS_BUILD_NUMBER";
-    docker tag gregoireweber/youtrack-arm:latest gregoireweber/youtrack-arm:"$YOUTRACK_VERSION"."YOUTRACK_BUILD";
-    docker tag gregoireweber/youtrack-arm:latest gregoireweber/youtrack-arm:"$YOUTRACK_VERSION";
-
-    docker push gregoireweber/youtrack-arm:latest;
-    docker push gregoireweber/youtrack-arm:"$YOUTRACK_VERSION"."YOUTRACK_BUILD"-"$TRAVIS_BUILD_NUMBER";
-    docker push gregoireweber/youtrack-arm:"$YOUTRACK_VERSION"."YOUTRACK_BUILD";
-    docker push gregoireweber/youtrack-arm:"$YOUTRACK_VERSION";
   fi
