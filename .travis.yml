@@ -1,3 +1,5 @@
+language: generic
+
 sudo: required
 
 env:
@@ -7,8 +9,6 @@ env:
 
 services:
   - docker
-
-language: generic
 
 script:
   # prepare qemu (https://blog.hypriot.com/post/setup-simple-ci-pipeline-for-arm-images/)
