@@ -11,7 +11,7 @@ LABEL       version="${YOUTRACK_VERSION}.${YOUTRACK_BUILD}"
 
 WORKDIR     /youtrack
 
-RUN         wget -qO youtrack-${YOUTRACK_VERSION}.${YOUTRACK_BUILD}.zip https://download.jetbrains.com/charisma/youtrack-${YOUTRACK_VERSION}.${YOUTRACK_BUILD}.jar
+RUN         wget -qO youtrack-${YOUTRACK_VERSION}.${YOUTRACK_BUILD}.jar https://download.jetbrains.com/charisma/youtrack-${YOUTRACK_VERSION}.${YOUTRACK_BUILD}.jar
 COPY        entrypoint.sh .
 
 ENTRYPOINT  ["./entrypoint.sh"]
